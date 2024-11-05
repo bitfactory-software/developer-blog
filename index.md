@@ -5,7 +5,7 @@ nav_order: 1
 permalink: /
 ---
 
-## Bit Factory : [wwww.bitfactory.at]
+## Bit Factory : [wwww.bitfactory.at](wwww.bitfactory.at)
 
 ## virtual_void library 
 
