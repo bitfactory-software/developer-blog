@@ -10,5 +10,5 @@ permalink: /
 ## virtual_void library 
 
 - repository:  [https://github.com/bitfactory-software/virtual_void](https://www.alexweb.io/virtual_void/)
-- dos: [https://www.alexweb.io/virtual_void](https://www.alexweb.io/virtual_void/)
+- docs: [https://www.alexweb.io/virtual_void](https://www.alexweb.io/virtual_void/)
 
