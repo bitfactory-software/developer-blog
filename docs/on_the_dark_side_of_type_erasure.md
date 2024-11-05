@@ -5,18 +5,16 @@ nav_order: 1
 
 # As we came on the dark side of type erasure
 
-This is a short story, with a lot of code, to tell from exitment, illusion, realisation and new orientation around "type erasure"
-
-<img width="920" alt="image" src="https://github.com/user-attachments/assets/65f7f175-08d6-4c5e-b3e1-7cb45a59779b">
+This is a short story, with a lot of code, to tell from exitment, illusion, realisation and new orientation around *type erasure*
 
 The story starts years back, by watching [Sean Parent talking about type erasure](https://www.youtube.com/watch?v=_BpMYeUFXv8).
 This was for us, as for many others, a really empowering expirience.
-It covered so many topics. For now, we will concentrate on the "type erasure" part.
+It covered so many topics. For now, we will concentrate on the *type erasure* part.
 
 ### A short recap 
 
-Let us start with a short recap of the quintesence in regard to "type erasure".
-To eliminate the boilerplate code, we use ["proxy"](https://github.com/microsoft/proxy). "proxy" is the "type erasure" library roposed for inclusion in c++26.
+Let us start with a short recap of the quintesence in regard to *type erasure*.
+To eliminate the boilerplate code, we use ["proxy"](https://github.com/microsoft/proxy). *proxy* is the *type erasure* library roposed for inclusion in c++26.
 
 The sample uses only a small part of the many features available in this awesome library.
 
@@ -66,20 +64,22 @@ int main()
     return 0;
 }
 ```
-[see it on compiler explorer]: https://en.wikipedia.org/wiki/Expression_problem
+[see it on compiler explorer]: TODO
+
+We see here:
 
 Some objects are constructed in "main".
 
 Their addresses are add to a vector with elememnts of type pro::proxy<drawable>.
 
-This is the "type eraser".
+This is the *type eraser*.
 
 The magic happens then inside of the algorithm. 
 
-The "type erasure run time dispatch", provided by proxy, takes care, that the corresponding function of the concrete object is executed.
+The *type erasure run time dispatch*, provided by *proxy*, calls the corresponding function of the concrete object.
 
 Wes see, that 
-- the implementation of the interface ("drawable") used by the algorithm is not tied to the implementation of the conrete type ("circle", "spare", .. ), 
+- the implementation of the interface (*drawable*) used by the algorithm is not tied to the implementation of the conrete type (*circle*, *spare*, .. ), 
 
 and
 
@@ -87,11 +87,11 @@ and
 
 These features are intruding.
 
-So it is understanding, that "type erasure" is the new cool thing in regards to runtime dispatch. 
+So it is understanding, that *type erasure* is the new cool thing in regards to runtime dispatch. 
 
 This reaches so far, that new languages, like "rust" go full in on that concept, and dissmiss the idea of inherritance as a whole.
 
-The key messeage we get told is: Programming along classes utilizing the conventional v-table is old school and outdated.
+The key messeage we get told is: Programming along classes utilizing the conventional *v-table* is old school and outdated.
 (see "type erasure ["My existing project uses virtual functions. How should I migrate to “Proxy”?]: https://microsoft.github.io/proxy/docs/faq.html#how-migrate)
 
 And here ends the the usual story. 
@@ -138,9 +138,9 @@ public:
 private: // nearly no data
 };
 ```
-"Derived" needed two distinct implementations, becuause in many important cases, tho original "Derived" is too heavy.
+*Derived* needed two distinct implementations, because in many important cases, the original *Derived* is too heavy.
 
-In terms of "proxy", we wanted something like this:
+In terms of *proxy*, we wanted something like this:
 ```c++
 #include <iostream>
 #include <vector>
@@ -231,14 +231,14 @@ We found no solution to this pattern in ["proxy"](https://github.com/microsoft/p
 - [AnyAny](https://github.com/kelbon/AnyAny)
 - [Dyno](https://github.com/ldionne/dyno)
 
-So we resorted to a old school unsexy "OO-Style + template mixture" to solve this particular riddle.
+So we resorted to a old school unsexy *OO + template style* mixture to solve this particular riddle.
 if you are interested, look at a [scetch on compiler explorer]: https://godbolt.org/z/dPPzKzzEq. 
 But beware, that looks realy ugly. It shows primary, there is a lot room for improvement.
 
 ### from "type erasure" to "type tunneling":
 
-There is a pattern, that shows a general hole in the application of "type erasure".
-We called that pattern the "type_erased_downcast problem".
+There is a pattern, that shows a general hole in the application of *type erasure*.
+We called that pattern the *type_erased_downcast* problem.
 This pattern can be reduced to this code lines.
 
 ```c++
@@ -257,8 +257,8 @@ int main() {
 }
 ```
 
-What we need, is a make_type_erased "thing" that supports "downcast".
-So the quitessence, as we took it, is, that "type erasue" is not the end. We need kind of "type tunnel".
+What we need, is a *ype erased* "thing" that supports "downcast".
+So the quitessence, as we took it, is, that *type erasue* is not the end. We need kind of *type tunne*".
 So the object can pass thru lower abstraction levels, with a fitting facade for them.
 But when we get them back, we need to recover its ritcher interface or even its real type.
 
@@ -266,5 +266,3 @@ Before we came to an (partial) solution for this problem, we needed to take some
 One of this perspectives came from std::any. 
 We will show next time.
 
-PS: We are no "Rust" experts. So we are curios, how this kind of pattern is solved there. As [we understand]: https://microsoft.github.io/rust-for-dotnet-devs/latest/language/custom-types/interfaces.html, 
-"Rust" has no downcasting for "traits". Maybe the answer is simple "Rust programmer write better programs, so they do not run in this kind of quirx" ;-)
